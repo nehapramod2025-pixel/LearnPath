@@ -159,6 +159,120 @@
             <p id="mode-message" class="mode-message" role="status"></p>
         </section>
 
+                <!-- ONLINE LEARNING SECTION -->
+        <section class="online-learning-section section" id="online-module">
+
+            <p class="eyebrow centered">PERSONALIZED ONLINE LEARNING</p>
+
+            <h2 class="section-title">Build Your Learning Path</h2>
+
+            <p class="section-description">
+                Choose your subject, topic, and preferred language
+                to discover learning resources suited to you.
+            </p>
+
+            <div class="learning-form">
+
+                <div class="form-group">
+                    <label for="subject">Select Subject</label>
+                    <select id="subject" name="subject">
+                        <option value="">Choose a subject</option>
+                        <option value="Python Programming">Python Programming</option>
+                        <option value="Data Structures">Data Structures</option>
+                        <option value="Database Management Systems">Database Management Systems</option>
+                        <option value="Operating Systems">Operating Systems</option>
+                        <option value="Mathematics">Mathematics</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="topic">Select Topic</label>
+                    <select id="topic" name="topic">
+                        <option value="">Choose a topic</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="language">Preferred Language</label>
+                    <select id="language" name="language">
+                        <option value="English">English</option>
+                        <option value="Telugu">Telugu</option>
+                        <option value="Hindi">Hindi</option>
+                        <option value="Tamil">Tamil</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="difficulty">Difficulty Level</label>
+                    <select id="difficulty" name="difficulty">
+                        <option value="Beginner">Beginner</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Advanced">Advanced</option>
+                    </select>
+                </div>
+
+                <button type="button" id="find-resources-button"
+                        class="mode-button online-button">
+                    Find Learning Resources
+                </button>
+
+            </div>
+
+            <div id="learning-results" class="learning-results"
+                 aria-live="polite"></div>
+
+
+            <!-- LEARNING PROGRESS AND FEEDBACK -->
+<div class="progress-feedback">
+
+    <h3>Track Your Learning Progress</h3>
+
+<p class="progress-description">
+    Every step counts. Update your progress and tell us how your learning journey is going.
+</p>
+    <div class="form-group">
+        <label for="progress-topic">Topic Status</label>
+
+        <select id="progress-topic">
+            <option value="">Select your status</option>
+            <option value="Not Started">Not Started</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Understood">Understood</option>
+            <option value="Confusing">Confusing</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <div class="form-group rating-group">
+    <label>Rate Your Learning Experience</label>
+
+    <div class="star-rating" id="star-rating">
+        <button type="button" class="star" data-rating="1" aria-label="1 star">★</button>
+        <button type="button" class="star" data-rating="2" aria-label="2 stars">★</button>
+        <button type="button" class="star" data-rating="3" aria-label="3 stars">★</button>
+        <button type="button" class="star" data-rating="4" aria-label="4 stars">★</button>
+        <button type="button" class="star" data-rating="5" aria-label="5 stars">★</button>
+    </div>
+
+    <p id="rating-message" role="status">Select a rating from 1 to 5.</p>
+</div>
+        <label for="learning-feedback">Your Feedback</label>
+
+        <textarea
+            id="learning-feedback"
+            rows="4"
+            placeholder="Tell us what you understood or found difficult..."
+        ></textarea>
+    </div>
+
+    <button type="button" id="save-progress-button" class="mode-button online-button">
+        Save Progress
+    </button>
+
+    <p id="progress-message" role="status"></p>
+
+</div>
+        </section>
         <section class="closing section">
             <h2>Your learning journey starts with one choice.</h2>
             <p>Choose your path. Build your knowledge. Keep progressing.</p>
