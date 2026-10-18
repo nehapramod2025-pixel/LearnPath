@@ -34,14 +34,30 @@
             <p class="tutor-js-status" id="tutor-js-status">Checking JavaScript...</p>
         </section>
 
-        <!-- Piece 2 will fill this: filters -->
-        <section class="tutor-section" id="filters">
-            <div class="tutor-placeholder">Filters (subject and language) will appear here.</div>
+                <section class="tutor-section" id="filters">
+            <div class="tutor-filters">
+                <div class="tutor-filter">
+                    <label for="subject-filter">Subject</label>
+                    <select id="subject-filter">
+                        <option value="">All subjects</option>
+                    </select>
+                </div>
+                <div class="tutor-filter">
+                    <label for="language-filter">Spoken language</label>
+                    <select id="language-filter">
+                        <option value="">All languages</option>
+                    </select>
+                </div>
+                <button type="button" class="tutor-clear-button" id="clear-filters">Clear filters</button>
+            </div>
+            <p class="tutor-result-count" id="result-count" role="status"></p>
         </section>
 
-        <!-- Piece 2 and 3 will fill this: tutor cards, ratings, reviews -->
+        <!-- Piece 3 will add ratings and reviews to the cards -->
         <section class="tutor-section" id="tutors">
-            <div class="tutor-placeholder">Tutor cards will appear here.</div>
+            <p class="tutor-sample-note">Sample tutors for design testing. Real data will come from the backend.</p>
+            <div class="tutor-grid" id="tutor-grid"></div>
+            <p class="tutor-empty" id="tutor-empty" hidden>No tutors match these filters. Try another subject or language.</p>
         </section>
 
         <!-- Piece 4 will fill this: availability and booking -->
