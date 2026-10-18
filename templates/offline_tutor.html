@@ -34,7 +34,7 @@
             <p class="tutor-js-status" id="tutor-js-status">Checking JavaScript...</p>
         </section>
 
-                        <section class="tutor-section" id="filters">
+        <section class="tutor-section" id="filters">
             <div class="tutor-filters">
                 <div class="tutor-filter">
                     <label for="subject-filter">Subject</label>
@@ -59,15 +59,13 @@
             <p class="tutor-result-count" id="result-count" role="status"></p>
         </section>
 
-        <!-- Piece 3 will add ratings and reviews to the cards -->
         <section class="tutor-section" id="tutors">
             <p class="tutor-sample-note">Sample tutors and reviews for design testing. Real data will come from the backend.</p>
             <div class="tutor-grid" id="tutor-grid"></div>
             <p class="tutor-empty" id="tutor-empty" hidden>No tutors match these filters. Try another subject or language.</p>
         </section>
 
-        <!-- Piece 4 will fill this: availability and booking -->
-                <section class="tutor-section" id="booking">
+        <section class="tutor-section" id="booking">
             <p class="eyebrow">BOOK A SESSION</p>
             <h2 class="tutor-section-title">Book a session</h2>
             <div class="booking-panel">
@@ -97,7 +95,7 @@
 
                     <div class="booking-summary" id="booking-summary"></div>
 
-                    <p class="booking-commission-note">LearnPath charges a 10% commission on eligible paid bookings. <a href="#commission">Read the commission notice</a></p>
+                    <p class="booking-commission-note">LearnPath charges a 10% commission on eligible paid bookings, taken from the payment to the tutor. <a href="#commission">Read the commission notice</a></p>
 
                     <button type="button" class="primary-button" id="booking-confirm" disabled>Request booking</button>
                     <p class="booking-message" id="booking-message" role="status"></p>
@@ -109,11 +107,11 @@
             <div class="commission-box">
                 <p class="eyebrow">COMMISSION NOTICE</p>
                 <h2 class="tutor-section-title">10% platform commission</h2>
-                <p>LearnPath charges a <strong>10% commission on eligible paid bookings</strong>. Tutors must acknowledge this before they can receive paid bookings.</p>
+                <p>LearnPath charges a <strong>10% commission on eligible paid bookings</strong>, taken from the payment the student makes to the tutor. Tutors must acknowledge this before they can receive paid bookings.</p>
                 <ul class="commission-points">
                     <li>The commission applies only to paid bookings that are eligible under LearnPath's terms.</li>
-                    <li>Each tutor's hourly fee is shown on their card.</li>
-                    <li>Example: on a paid session of &#8377;500, the 10% commission is &#8377;50.</li>
+                    <li>The commission is deducted from the student's payment to the tutor. The tutor receives the remaining 90%.</li>
+                    <li>Example: on a paid session of &#8377;500, &#8377;50 goes to LearnPath and the tutor receives &#8377;450.</li>
                     <li>A tutor who has not acknowledged these terms cannot be booked for paid sessions.</li>
                 </ul>
 
@@ -125,7 +123,7 @@
                     </div>
                     <label class="ack-check">
                         <input type="checkbox" id="ack-check">
-                        <span>I acknowledge that LearnPath charges a 10% commission on eligible paid bookings.</span>
+                        <span>I acknowledge that LearnPath charges a 10% commission on eligible paid bookings, deducted from the payments I receive.</span>
                     </label>
                     <button type="button" class="tutor-clear-button" id="ack-button">Acknowledge</button>
                     <p class="booking-message" id="ack-message" role="status"></p>
