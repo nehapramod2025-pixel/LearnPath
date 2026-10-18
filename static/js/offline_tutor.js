@@ -176,6 +176,42 @@ var TUTOR_TOPICS = {
     17: { "Tamil": ["Grammar", "Literature"] },
     18: { "Anatomy": ["Musculoskeletal System", "Nervous System"], "Physiology": ["Cardiovascular System", "Respiration"] }
 };
+// SAMPLE AVAILABILITY (made-up), keyed by tutor id.
+// days = weekdays (0 = Sunday ... 6 = Saturday), slots = start times of 1-hour sessions.
+// The backend will replace this later.
+var AVAILABILITY = {
+    1: { days: [1, 2, 3, 4, 5], slots: ["16:00", "17:00", "18:00"] },
+    2: { days: [1, 3, 5, 6], slots: ["10:00", "15:00", "17:00"] },
+    3: { days: [2, 4, 6], slots: ["09:00", "11:00", "16:00"] },
+    4: { days: [1, 2, 3, 4, 5, 6], slots: ["17:00", "18:00", "19:00"] },
+    5: { days: [3, 6, 0], slots: ["14:00", "16:00"] },
+    6: { days: [1, 3, 5], slots: ["16:00", "18:00"] },
+    7: { days: [2, 4, 6], slots: ["15:00", "17:00", "19:00"] },
+    8: { days: [1, 2, 4, 5], slots: ["16:00", "18:00"] },
+    9: { days: [1, 3, 5, 6], slots: ["10:00", "14:00", "17:00"] },
+    10: { days: [2, 3, 4], slots: ["17:00", "18:00", "19:00"] },
+    11: { days: [1, 2, 3, 4, 5], slots: ["15:00", "17:00"] },
+    12: { days: [2, 4, 6, 0], slots: ["10:00", "16:00"] },
+    13: { days: [1, 3, 5], slots: ["17:00", "19:00"] },
+    14: { days: [1, 2, 3, 4, 5, 6], slots: ["09:00", "11:00", "16:00"] },
+    15: { days: [3, 4, 5, 6], slots: ["18:00", "19:00", "20:00"] },
+    16: { days: [1, 2, 3, 4, 5], slots: ["10:00", "14:00", "16:00"] },
+    17: { days: [1, 2, 3, 4, 5, 6, 0], slots: ["07:00", "17:00", "18:00"] },
+    18: { days: [2, 3, 5, 6], slots: ["10:00", "15:00", "17:00"] }
+};
+
+var DAY_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+var MONTH_NAMES = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+// LearnPath commission on eligible paid bookings.
+var COMMISSION_RATE = 0.10;
+
+// SAMPLE: tutors who have acknowledged the commission terms (keyed by tutor id).
+// Tutors 5 and 15 have NOT acknowledged yet, so you can test that case.
+var commissionAck = {
+    1: true, 2: true, 3: true, 4: true, 6: true, 7: true, 8: true,
+    10: true, 11: true, 12: true, 14: true, 16: true, 17: true, 18: true
+};
 
 // The three feedback categories shown on each card.
 var FEEDBACK_ITEMS = [
@@ -401,7 +437,21 @@ function buildCard(tutor) {
         card.appendChild(buildFeedback(reviews));
     }
 
-    card.appendChild(createEl("p", "tutor-fee", "\u20B9" + tutor.hourlyFee + " per hour"));
+        card.appendChild(createEl("p", "tutor-fee", "\u20B9" + tutor.hourlyFee + " per hour"));
+
+    card.appendChild(createEl("p", "tutor-label", "Available days"));
+    card.appendChild(createEl("p", "tutor-days", availableDaysText(tutor)));
+
+    var acknowledged = commissionAck[tutor.id] === true;
+    card.appendChild(createEl("p", acknowledged ? "tutor-ack tutor-ack-yes" : "tutor-ack tutor-ack-no",
+        acknowledged ? "\u2714 Commission terms acknowledged" : "Commission terms not yet acknowledged"));
+
+    var bookButton = createEl("button", "primary-button tutor-book-button", "Book a session");
+    bookButton.type = "button";
+    bookButton.addEventListener("click", function () {
+        selectTutor(tutor);
+    });
+    card.appendChild(bookButton);
 
     if (reviews.length > 0) {
         card.appendChild(buildReviewsSection(reviews));
@@ -484,11 +534,228 @@ function setUpFilters() {
     });
 }
 
+// ---------- Availability and booking ----------
+
+var booking = { tutor: null, dayIndex: -1, slot: "" };
+
+// "16:00" -> "4:00 PM"
+function formatTime(time) {
+    var parts = time.split(":");
+    var hour = parseInt(parts[0], 10);
+    var suffix = hour >= 12 ? "PM" : "AM";
+    var hour12 = hour % 12 === 0 ? 12 : hour % 12;
+    return hour12 + ":" + parts[1] + " " + suffix;
+}
+
+// "Mon, Wed, Fri" for a tutor card.
+function availableDaysText(tutor) {
+    var info = AVAILABILITY[tutor.id];
+    if (!info) {
+        return "Availability not set";
+    }
+    var order = [1, 2, 3, 4, 5, 6, 0];
+    return order.filter(function (day) {
+        return info.days.indexOf(day) !== -1;
+    }).map(function (day) {
+        return DAY_NAMES[day];
+    }).join(", ");
+}
+
+// Today and the next days, as Date objects.
+function getNextDays(count) {
+    var days = [];
+    var today = new Date();
+    for (var i = 0; i < count; i++) {
+        days.push(new Date(today.getFullYear(), today.getMonth(), today.getDate() + i));
+    }
+    return days;
+}
+
+function dayLabel(date) {
+    return DAY_NAMES[date.getDay()] + " " + date.getDate() + " " + MONTH_NAMES[date.getMonth()];
+}
+
+function isTutorFreeOnDay(tutor, date) {
+    var info = AVAILABILITY[tutor.id];
+    return !!info && info.days.indexOf(date.getDay()) !== -1;
+}
+
+// SAMPLE rule to make some slots look already booked.
+function isSlotBooked(tutor, dayIndex, slotIndex) {
+    return (tutor.id + dayIndex + slotIndex) % 5 === 0;
+}
+
+function renderBookingDays() {
+    var wrap = document.getElementById("booking-days");
+    wrap.innerHTML = "";
+    getNextDays(7).forEach(function (date, index) {
+        var button = createEl("button", "booking-choice", dayLabel(date));
+        button.type = "button";
+        button.disabled = !isTutorFreeOnDay(booking.tutor, date);
+        if (index === booking.dayIndex) {
+            button.className += " selected";
+        }
+        button.addEventListener("click", function () {
+            booking.dayIndex = index;
+            booking.slot = "";
+            renderBookingDays();
+            renderBookingSlots();
+            updateBookingSummary();
+        });
+        wrap.appendChild(button);
+    });
+}
+
+function renderBookingSlots() {
+    var wrap = document.getElementById("booking-slots");
+    wrap.innerHTML = "";
+    if (booking.dayIndex < 0) {
+        wrap.appendChild(createEl("p", "booking-hint", "Pick a day first."));
+        return;
+    }
+    var info = AVAILABILITY[booking.tutor.id];
+    info.slots.forEach(function (slot, slotIndex) {
+        var taken = isSlotBooked(booking.tutor, booking.dayIndex, slotIndex);
+        var button = createEl("button", "booking-choice", formatTime(slot) + (taken ? " (booked)" : ""));
+        button.type = "button";
+        button.disabled = taken;
+        if (slot === booking.slot) {
+            button.className += " selected";
+        }
+        button.addEventListener("click", function () {
+            booking.slot = slot;
+            renderBookingSlots();
+            updateBookingSummary();
+        });
+        wrap.appendChild(button);
+    });
+}
+
+function updateBookingSummary() {
+    var tutor = booking.tutor;
+    var summary = document.getElementById("booking-summary");
+    var confirmButton = document.getElementById("booking-confirm");
+    var message = document.getElementById("booking-message");
+    var name = document.getElementById("booking-name").value.trim();
+    var fee = tutor.hourlyFee;
+    var commission = Math.round(fee * COMMISSION_RATE);
+
+    summary.innerHTML = "";
+    var when = "No time selected yet";
+    if (booking.dayIndex >= 0 && booking.slot !== "") {
+        when = dayLabel(getNextDays(7)[booking.dayIndex]) + ", " + formatTime(booking.slot) + " (1 hour)";
+    }
+    summary.appendChild(createEl("p", "booking-summary-line", "When: " + when));
+    summary.appendChild(createEl("p", "booking-summary-line", "Session fee: \u20B9" + fee + " for 1 hour"));
+    summary.appendChild(createEl("p", "booking-summary-line", "LearnPath commission (10% on eligible paid bookings): \u20B9" + commission));
+
+    if (commissionAck[tutor.id] !== true) {
+        message.textContent = "This tutor has not acknowledged the commission terms yet, so paid bookings are not available for now.";
+        confirmButton.disabled = true;
+        return;
+    }
+
+    message.textContent = "";
+    confirmButton.disabled = !(booking.dayIndex >= 0 && booking.slot !== "" && name !== "");
+}
+
+// Called when a student clicks "Book a session" on a card.
+function selectTutor(tutor) {
+    booking.tutor = tutor;
+    booking.dayIndex = -1;
+    booking.slot = "";
+
+    document.getElementById("booking-empty").hidden = true;
+    document.getElementById("booking-body").hidden = false;
+
+    var header = document.getElementById("booking-tutor");
+    header.innerHTML = "";
+    header.appendChild(createEl("strong", "", tutor.name));
+    header.appendChild(createEl("p", "tutor-title", tutor.title + " \u00B7 \u20B9" + tutor.hourlyFee + " per hour"));
+
+    var subjectSelect = document.getElementById("booking-subject");
+    subjectSelect.innerHTML = "";
+    fillSelect(subjectSelect, tutor.subjects);
+
+    renderBookingDays();
+    renderBookingSlots();
+    updateBookingSummary();
+    document.getElementById("booking").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function setUpBooking() {
+    var nameInput = document.getElementById("booking-name");
+    var confirmButton = document.getElementById("booking-confirm");
+    var message = document.getElementById("booking-message");
+
+    nameInput.addEventListener("input", function () {
+        if (booking.tutor) {
+            updateBookingSummary();
+        }
+    });
+
+    confirmButton.addEventListener("click", function () {
+        var date = getNextDays(7)[booking.dayIndex];
+        var subject = document.getElementById("booking-subject").value;
+        var text = "Booking request prepared for " + subject + " with " + booking.tutor.name +
+            " on " + dayLabel(date) + " at " + formatTime(booking.slot) + ", " + nameInput.value.trim() +
+            ". (Demo only: nothing is saved yet. The backend will store real bookings.)";
+        booking.slot = "";
+        renderBookingSlots();
+        updateBookingSummary();
+        message.textContent = text;
+    });
+}
+
+// ---------- Tutor acknowledgement of the commission ----------
+
+function setUpAcknowledgement() {
+    var select = document.getElementById("ack-tutor");
+    var check = document.getElementById("ack-check");
+    var button = document.getElementById("ack-button");
+    var message = document.getElementById("ack-message");
+
+    var placeholder = document.createElement("option");
+    placeholder.value = "";
+    placeholder.textContent = "Select your name";
+    select.appendChild(placeholder);
+    TUTORS.forEach(function (tutor) {
+        var option = document.createElement("option");
+        option.value = tutor.id;
+        option.textContent = tutor.name;
+        select.appendChild(option);
+    });
+
+    button.addEventListener("click", function () {
+        if (select.value === "") {
+            message.textContent = "Please select your name first.";
+            return;
+        }
+        if (!check.checked) {
+            message.textContent = "Please tick the box to acknowledge the commission.";
+            return;
+        }
+        var id = parseInt(select.value, 10);
+        commissionAck[id] = true;
+        var tutor = TUTORS.filter(function (item) {
+            return item.id === id;
+        })[0];
+        message.textContent = tutor.name + " has acknowledged the 10% commission. (Demo only: the backend will save this later.)";
+        check.checked = false;
+        renderTutors();
+        if (booking.tutor && booking.tutor.id === id) {
+            updateBookingSummary();
+        }
+    });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     var status = document.getElementById("tutor-js-status");
     if (status) {
         status.textContent = "JavaScript is working \u2714";
     }
     setUpFilters();
+    setUpBooking();
+    setUpAcknowledgement();
     renderTutors();
 });

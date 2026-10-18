@@ -335,3 +335,213 @@
     overflow-y: auto;
     padding-right: 4px;
 }
+/* ---------- Section titles ---------- */
+.tutor-section-title {
+    margin: 6px 0 16px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 28px;
+    color: var(--navy);
+}
+
+/* ---------- Card extras ---------- */
+.tutor-days {
+    font-size: 13px;
+    color: var(--ink);
+}
+
+.tutor-ack {
+    margin-top: 12px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.tutor-ack-yes {
+    color: #2f7a4a;
+}
+
+.tutor-ack-no {
+    color: #b0541f;
+}
+
+.tutor-book-button {
+    width: 100%;
+    margin-top: 16px;
+    padding: 12px 18px;
+    cursor: pointer;
+}
+
+/* ---------- Booking panel ---------- */
+.booking-panel {
+    padding: 28px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #e8e1d1;
+    border-top: 3px solid var(--gold);
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(23, 38, 66, 0.04);
+}
+
+.booking-empty,
+.booking-hint {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.booking-tutor {
+    margin-bottom: 20px;
+}
+
+.booking-tutor strong {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 20px;
+    color: var(--navy);
+}
+
+.booking-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-width: 560px;
+    margin-bottom: 18px;
+}
+
+.booking-field label,
+.booking-label {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+}
+
+.booking-field select,
+.booking-field input[type="text"] {
+    padding: 12px 14px;
+    border: 1px solid #e0d5b8;
+    border-radius: 10px;
+    background: #ffffff;
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+}
+
+.booking-days,
+.booking-slots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.booking-choice {
+    padding: 10px 14px;
+    border: 1px solid #e0d5b8;
+    border-radius: 10px;
+    background: #ffffff;
+    color: var(--navy);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.booking-choice:hover:not(:disabled) {
+    border-color: var(--gold-dark);
+}
+
+.booking-choice.selected {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: #ffffff;
+}
+
+.booking-choice:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.booking-summary {
+    max-width: 560px;
+    margin: 6px 0 12px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: var(--gold-light);
+}
+
+.booking-summary-line {
+    margin: 4px 0;
+    font-size: 14px;
+    color: var(--ink);
+}
+
+.booking-commission-note {
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: var(--ink);
+}
+
+.booking-commission-note a {
+    color: var(--gold-dark);
+    font-weight: 700;
+}
+
+#booking-confirm {
+    cursor: pointer;
+}
+
+#booking-confirm:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.booking-message {
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+}
+
+/* ---------- Commission notice ---------- */
+.commission-box {
+    padding: 28px;
+    background: var(--gold-light);
+    border: 1px solid #e0d5b8;
+    border-left: 4px solid var(--gold);
+    border-radius: 18px;
+}
+
+.commission-box > p {
+    line-height: 1.6;
+    color: var(--ink);
+}
+
+.commission-points {
+    margin: 14px 0 22px 20px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--ink);
+}
+
+.commission-ack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 560px;
+    padding-top: 18px;
+    border-top: 1px solid #e0d5b8;
+}
+
+.ack-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--ink);
+    cursor: pointer;
+}
+
+.ack-check input {
+    margin-top: 4px;
+}
+
+.commission-ack .tutor-clear-button {
+    align-self: flex-start;
+}
