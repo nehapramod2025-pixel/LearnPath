@@ -34,7 +34,7 @@
             <p class="tutor-js-status" id="tutor-js-status">Checking JavaScript...</p>
         </section>
 
-                <section class="tutor-section" id="filters">
+                        <section class="tutor-section" id="filters">
             <div class="tutor-filters">
                 <div class="tutor-filter">
                     <label for="subject-filter">Subject</label>
@@ -48,6 +48,12 @@
                         <option value="">All languages</option>
                     </select>
                 </div>
+                <div class="tutor-filter">
+                    <label for="topic-filter">Topic</label>
+                    <select id="topic-filter" disabled>
+                        <option value="">Choose a subject first</option>
+                    </select>
+                </div>
                 <button type="button" class="tutor-clear-button" id="clear-filters">Clear filters</button>
             </div>
             <p class="tutor-result-count" id="result-count" role="status"></p>
@@ -55,7 +61,7 @@
 
         <!-- Piece 3 will add ratings and reviews to the cards -->
         <section class="tutor-section" id="tutors">
-            <p class="tutor-sample-note">Sample tutors for design testing. Real data will come from the backend.</p>
+            <p class="tutor-sample-note">Sample tutors and reviews for design testing. Real data will come from the backend.</p>
             <div class="tutor-grid" id="tutor-grid"></div>
             <p class="tutor-empty" id="tutor-empty" hidden>No tutors match these filters. Try another subject or language.</p>
         </section>

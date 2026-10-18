@@ -221,3 +221,117 @@
     color: var(--muted);
     text-align: center;
 }
+/* ---------- Ratings and reviews ---------- */
+.tutor-rating-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin-top: 14px;
+    font-size: 13px;
+}
+
+.tutor-stars {
+    color: var(--gold);
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.tutor-rating-value {
+    font-weight: 800;
+    color: var(--navy);
+}
+
+.tutor-rating-count,
+.tutor-no-reviews {
+    color: var(--muted);
+}
+
+.tutor-no-reviews {
+    font-style: italic;
+}
+
+.tutor-feedback-row {
+    display: grid;
+    grid-template-columns: 1fr 70px 28px;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    font-size: 12px;
+    color: var(--ink);
+}
+
+.tutor-bar-track {
+    height: 6px;
+    border-radius: 999px;
+    background: #efe9d8;
+    overflow: hidden;
+}
+
+.tutor-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: var(--gold);
+}
+
+.tutor-feedback-value {
+    font-weight: 700;
+    color: var(--navy);
+    text-align: right;
+}
+
+.tutor-reviews {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid #efe9d8;
+}
+
+.tutor-reviews-button {
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--gold-dark);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.tutor-reviews-button:hover {
+    text-decoration: underline;
+}
+
+.tutor-reviews-panel {
+    margin-top: 12px;
+}
+
+.tutor-review {
+    margin-bottom: 12px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: var(--gold-light);
+}
+
+.tutor-review-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.tutor-review-name {
+    font-size: 13px;
+    color: var(--navy);
+}
+
+.tutor-review-text {
+    margin-top: 6px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink);
+}
+.tutor-reviews-panel {
+    max-height: 260px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
