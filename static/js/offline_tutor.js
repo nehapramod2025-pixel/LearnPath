@@ -4,25 +4,24 @@
 // The team lead's backend/API will replace this list later.
 var TUTORS = [
     { id: 1, name: "Ananya Raghavan", title: "Mathematics and Physics tutor", experienceYears: 6, area: "Katpadi, Vellore", hourlyFee: 400, subjects: ["Mathematics", "Physics"], languages: ["English", "Tamil"] },
-    { id: 2, name: "Karthik Subramani", title: "Computer Science tutor", experienceYears: 4, area: "Gandhi Nagar, Vellore", hourlyFee: 500, subjects: ["Computer Science", "Mathematics"], languages: ["English", "Tamil", "Telugu"] },
+    { id: 2, name: "Karthik Subramani", title: "Computer Science tutor", experienceYears: 4, studentYear: "4th year", area: "Gandhi Nagar, Vellore", hourlyFee: 500, subjects: ["Computer Science", "Mathematics"], languages: ["English", "Tamil", "Telugu"] },
     { id: 3, name: "Meera Nair", title: "Chemistry and Biology tutor", experienceYears: 8, area: "Anna Nagar, Chennai", hourlyFee: 450, subjects: ["Chemistry", "Biology"], languages: ["English", "Hindi", "Malayalam"] },
-    { id: 4, name: "Farhan Sheikh", title: "English and Communication tutor", experienceYears: 5, area: "Katpadi, Vellore", hourlyFee: 350, subjects: ["English"], languages: ["English", "Hindi"] },
-    { id: 5, name: "Divya Menon", title: "Mathematics tutor", experienceYears: 0, studentYear: "2nd year", area: "Katpadi, Vellore", hourlyFee: 250, subjects: ["Mathematics"], languages: ["Tamil", "English"] },
-    { id: 6, name: "Sneha Iyer", title: "Economics and Accountancy tutor", experienceYears: 5, area: "Gandhi Nagar, Vellore", hourlyFee: 380, subjects: ["Economics", "Accountancy"], languages: ["English", "Tamil"] },
-    { id: 7, name: "Sanjay Raman", title: "DBMS and SQL tutor", experienceYears: 5, area: "Katpadi, Vellore", hourlyFee: 450, subjects: ["DBMS", "SQL"], languages: ["English", "Tamil"] },
-    { id: 8, name: "Harshitha Rao", title: "DAA and Data Structures tutor", experienceYears: 4, area: "Gandhi Nagar, Vellore", hourlyFee: 480, subjects: ["DAA", "Data Structures"], languages: ["English", "Telugu", "Hindi"] },
-    { id: 9, name: "Mohammed Faizal", title: "Operating Systems and Networks tutor", experienceYears: 6, area: "Anna Nagar, Chennai", hourlyFee: 500, subjects: ["Operating Systems", "Computer Networks"], languages: ["English", "Tamil", "Hindi"] },
-    { id: 10, name: "Janani Krishnan", title: "Python, Java and DBMS tutor", experienceYears: 3, area: "Sathuvachari, Vellore", hourlyFee: 400, subjects: ["Python", "Java", "DBMS"], languages: ["Tamil", "English"] },
-    { id: 11, name: "Ravi Shankar", title: "Mechanical Engineering tutor", experienceYears: 7, area: "Katpadi, Vellore", hourlyFee: 480, subjects: ["Thermodynamics", "Engineering Mechanics"], languages: ["English", "Tamil"] },
-    { id: 12, name: "Anitha Devi", title: "Electrical Engineering tutor", experienceYears: 6, area: "Gandhi Nagar, Vellore", hourlyFee: 460, subjects: ["Circuit Theory", "Electrical Machines"], languages: ["English", "Tamil", "Kannada"] },
-    { id: 13, name: "Sudhir Menon", title: "Electronics and Communication tutor", experienceYears: 5, area: "Anna Nagar, Chennai", hourlyFee: 470, subjects: ["Digital Electronics", "Signals and Systems"], languages: ["English", "Malayalam", "Hindi"] },
-    { id: 14, name: "Gopal Reddy", title: "Civil Engineering tutor", experienceYears: 8, area: "Sathuvachari, Vellore", hourlyFee: 440, subjects: ["Structural Analysis", "Surveying"], languages: ["English", "Telugu"] },
-    { id: 15, name: "Nandita Rao", title: "Machine Learning and Python tutor", experienceYears: 3, area: "T. Nagar, Chennai", hourlyFee: 550, subjects: ["Machine Learning", "Python"], languages: ["English", "Telugu", "Hindi"] },
-    { id: 16, name: "Rekha Pillai", title: "Business Studies and Management tutor", experienceYears: 9, area: "Gandhi Nagar, Vellore", hourlyFee: 390, subjects: ["Business Studies", "Management"], languages: ["English", "Malayalam", "Tamil"] },
-    { id: 17, name: "Muthu Selvi", title: "Tamil tutor", experienceYears: 10, area: "Sathuvachari, Vellore", hourlyFee: 300, subjects: ["Tamil"], languages: ["Tamil", "English"] },
-    { id: 18, name: "Shabana Begum", title: "Anatomy and Physiology tutor", experienceYears: 6, area: "Katpadi, Vellore", hourlyFee: 460, subjects: ["Anatomy", "Physiology"], languages: ["English", "Tamil", "Hindi"] }
+    { id: 4, name: "Farhan Sheikh", title: "English and Communication tutor", experienceYears: 5, area: "Bagayam, Vellore", hourlyFee: 350, subjects: ["English"], languages: ["English", "Hindi"] },
+    { id: 5, name: "Divya Menon", title: "Mathematics tutor", experienceYears: 0, studentYear: "2nd year", area: "Thorapadi, Vellore", hourlyFee: 250, subjects: ["Mathematics"], languages: ["Tamil", "English"] },
+    { id: 6, name: "Sneha Iyer", title: "Economics and Accountancy tutor", experienceYears: 5, area: "Adyar, Chennai", hourlyFee: 380, subjects: ["Economics", "Accountancy"], languages: ["English", "Tamil"] },
+    { id: 7, name: "Sanjay Raman", title: "DBMS and SQL tutor", experienceYears: 5, area: "Sathuvachari, Vellore", hourlyFee: 450, subjects: ["DBMS", "SQL"], languages: ["English", "Tamil"] },
+    { id: 8, name: "Harshitha Rao", title: "DAA and Data Structures tutor", experienceYears: 4, studentYear: "4th year", area: "Velachery, Chennai", hourlyFee: 480, subjects: ["DAA", "Data Structures"], languages: ["English", "Telugu", "Hindi"] },
+    { id: 9, name: "Mohammed Faizal", title: "Operating Systems and Networks tutor", experienceYears: 6, area: "Tambaram, Chennai", hourlyFee: 500, subjects: ["Operating Systems", "Computer Networks"], languages: ["English", "Tamil", "Hindi"] },
+    { id: 10, name: "Janani Krishnan", title: "Python, Java and DBMS tutor", experienceYears: 3, studentYear: "3rd year", area: "Kaspa, Vellore", hourlyFee: 400, subjects: ["Python", "Java", "DBMS"], languages: ["Tamil", "English"] },
+    { id: 11, name: "Ravi Shankar", title: "Mechanical Engineering tutor", experienceYears: 7, area: "Ranipet", hourlyFee: 480, subjects: ["Thermodynamics", "Engineering Mechanics"], languages: ["English", "Tamil"] },
+    { id: 12, name: "Anitha Devi", title: "Electrical Engineering tutor", experienceYears: 6, area: "Porur, Chennai", hourlyFee: 460, subjects: ["Circuit Theory", "Electrical Machines"], languages: ["English", "Tamil", "Kannada"] },
+    { id: 13, name: "Sudhir Menon", title: "Electronics and Communication tutor", experienceYears: 5, area: "T. Nagar, Chennai", hourlyFee: 470, subjects: ["Digital Electronics", "Signals and Systems"], languages: ["English", "Malayalam", "Hindi"] },
+    { id: 14, name: "Gopal Reddy", title: "Civil Engineering tutor", experienceYears: 8, area: "Arcot", hourlyFee: 440, subjects: ["Structural Analysis", "Surveying"], languages: ["English", "Telugu"] },
+    { id: 15, name: "Nandita Rao", title: "Machine Learning and Python tutor", experienceYears: 3, studentYear: "3rd year", area: "Guindy, Chennai", hourlyFee: 550, subjects: ["Machine Learning", "Python"], languages: ["English", "Telugu", "Hindi"] },
+    { id: 16, name: "Rekha Pillai", title: "Business Studies and Management tutor", experienceYears: 9, area: "RS Puram, Coimbatore", hourlyFee: 390, subjects: ["Business Studies", "Management"], languages: ["English", "Malayalam", "Tamil"] },
+    { id: 17, name: "Muthu Selvi", title: "Tamil tutor", experienceYears: 10, area: "Tiruvannamalai", hourlyFee: 300, subjects: ["Tamil"], languages: ["Tamil", "English"] },
+    { id: 18, name: "Shabana Begum", title: "Anatomy and Physiology tutor", experienceYears: 6, area: "Ambur", hourlyFee: 460, subjects: ["Anatomy", "Physiology"], languages: ["English", "Tamil", "Hindi"] }
 ];
-
 // SAMPLE REVIEWS (made-up), keyed by tutor id.
 // r(student, rating, onTime, doubts, helpful, text), all scores are out of 5:
 //   rating  = overall rating
@@ -176,6 +175,7 @@ var TUTOR_TOPICS = {
     17: { "Tamil": ["Grammar", "Literature"] },
     18: { "Anatomy": ["Musculoskeletal System", "Nervous System"], "Physiology": ["Cardiovascular System", "Respiration"] }
 };
+
 // SAMPLE AVAILABILITY (made-up), keyed by tutor id.
 // days = weekdays (0 = Sunday ... 6 = Saturday), slots = start times of 1-hour sessions.
 // The backend will replace this later.
@@ -207,10 +207,21 @@ var MONTH_NAMES = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"
 var COMMISSION_RATE = 0.10;
 
 // SAMPLE: tutors who have acknowledged the commission terms (keyed by tutor id).
-// Tutors 5 and 15 have NOT acknowledged yet, so you can test that case.
+// Tutors 5, 9, 13 and 15 have NOT acknowledged yet, so you can test that case.
 var commissionAck = {
     1: true, 2: true, 3: true, 4: true, 6: true, 7: true, 8: true,
     10: true, 11: true, 12: true, 14: true, 16: true, 17: true, 18: true
+};
+
+// SAMPLE: subjects a tutor is also learning (made-up), keyed by tutor id.
+// The same person can be a tutor in some subjects and a learner in others.
+var ALSO_LEARNING = {
+    2: ["Machine Learning"],
+    5: ["DBMS", "DAA"],
+    6: ["Python"],
+    8: ["Operating Systems"],
+    10: ["Computer Networks"],
+    15: ["Data Structures"]
 };
 
 // The three feedback categories shown on each card.
@@ -267,14 +278,13 @@ function createChips(values, chipClass) {
     return row;
 }
 
+// "3 years experience . 3rd year student" or "New tutor . 2nd year student".
 function experienceText(tutor) {
-    if (tutor.experienceYears >= 1) {
-        return tutor.experienceYears + " years experience";
-    }
+    var text = tutor.experienceYears >= 1 ? tutor.experienceYears + " years experience" : "New tutor";
     if (tutor.studentYear) {
-        return "New tutor \u00B7 " + tutor.studentYear + " student";
+        text += " \u00B7 " + tutor.studentYear + " student";
     }
-    return "New tutor";
+    return text;
 }
 
 // Topics a tutor teaches under one subject.
@@ -433,11 +443,17 @@ function buildCard(tutor) {
     card.appendChild(createEl("p", "tutor-label", "Spoken languages"));
     card.appendChild(createChips(tutor.languages, "language-chip"));
 
+    var learning = ALSO_LEARNING[tutor.id];
+    if (learning && learning.length > 0) {
+        card.appendChild(createEl("p", "tutor-label", "Also learning"));
+        card.appendChild(createChips(learning, "learning-chip"));
+    }
+
     if (reviews.length > 0) {
         card.appendChild(buildFeedback(reviews));
     }
 
-        card.appendChild(createEl("p", "tutor-fee", "\u20B9" + tutor.hourlyFee + " per hour"));
+    card.appendChild(createEl("p", "tutor-fee", "\u20B9" + tutor.hourlyFee + " per hour"));
 
     card.appendChild(createEl("p", "tutor-label", "Available days"));
     card.appendChild(createEl("p", "tutor-days", availableDaysText(tutor)));
@@ -649,6 +665,7 @@ function updateBookingSummary() {
     summary.appendChild(createEl("p", "booking-summary-line", "Session fee: \u20B9" + fee + " for 1 hour"));
     summary.appendChild(createEl("p", "booking-summary-line", "LearnPath commission (10% of the payment): \u20B9" + commission));
     summary.appendChild(createEl("p", "booking-summary-line", "Tutor receives: \u20B9" + (fee - commission)));
+
     if (commissionAck[tutor.id] !== true) {
         message.textContent = "This tutor has not acknowledged the commission terms yet, so paid bookings are not available for now.";
         confirmButton.disabled = true;
