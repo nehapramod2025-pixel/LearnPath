@@ -663,11 +663,11 @@ function updateBookingSummary() {
     }
     summary.appendChild(createEl("p", "booking-summary-line", "When: " + when));
     summary.appendChild(createEl("p", "booking-summary-line", "Session fee: \u20B9" + fee + " for 1 hour"));
-    summary.appendChild(createEl("p", "booking-summary-line", "LearnPath commission (10% of the payment): \u20B9" + commission));
+    summary.appendChild(createEl("p", "booking-summary-line", "LearnPath commission (10% of the payment, not refundable): \u20B9" + commission));
     summary.appendChild(createEl("p", "booking-summary-line", "Tutor receives: \u20B9" + (fee - commission)));
 
     if (commissionAck[tutor.id] !== true) {
-        message.textContent = "This tutor has not acknowledged the commission terms yet, so paid bookings are not available for now.";
+        message.textContent = "This tutor has not acknowledged the commission terms yet, so bookings are not available for now.";
         confirmButton.disabled = true;
         return;
     }
