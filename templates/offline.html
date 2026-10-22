@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline Learning | LearnPath</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="navbar">
+        <a href="/" class="logo" aria-label="LearnPath Home">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="LearnPath Logo" class="brand-logo">
+            <span>LearnPath<span class="logo-dot">.</span></span>
+        </a>
+        <nav>
+            <a href="/">Home</a>
+            <a href="#tutor-search">Find Tutors</a>
+        </nav>
+        <a href="/" class="nav-button">Back to Home</a>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <p class="eyebrow">OFFLINE LEARNING</p>
+                <h1>Learn with a<br><span>personal tutor.</span></h1>
+                <p class="hero-description">Explore tutor-guided learning and arrange a session for the subject you want to understand better.</p>
+                <a href="#tutor-search" class="primary-button">Explore Tutor Options →</a>
+            </div>
+        </section>
+        <section class="section" id="tutor-search">
+            <p class="eyebrow centered">TUTOR-GUIDED LEARNING</p>
+            <h2 class="section-title">Find Your Tutor</h2>
+            <p class="section-description">The tutor search and booking module can be connected here.</p>
+            <div class="feature-grid">
+                <article class="feature-card">
+                    <div class="feature-icon purple">🔎</div>
+                    <h3>Find Tutors</h3>
+                    <p>Search for tutors by subject and language.</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon orange">📅</div>
+                    <h3>Choose a Slot</h3>
+                    <p>View availability and select a convenient session time.</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon green">📚</div>
+                    <h3>Learn Personally</h3>
+                    <p>Get tutor-guided help with concepts and doubts.</p>
+                </article>
+            </div>
+            <p class="mode-message" role="status">Tutor listings and booking will appear here once the offline tutor API is connected.</p>
+        </section>
+    </main>
+    <footer>
+        <a href="/" class="logo" aria-label="LearnPath Home">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="LearnPath Logo" class="brand-logo">
+            <span>LearnPath<span class="logo-dot">.</span></span>
+        </a>
+        <p>Personalized learning, one step at a time.</p>
+        <p class="copyright">© 2026 LearnPath — Academic Project</p>
+    </footer>
+</body>
+</html>

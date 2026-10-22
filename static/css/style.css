@@ -662,3 +662,415 @@ footer p {
         text-align: center;
     }
 }
+
+
+/* ===== ONLINE LEARNING MODULE ===== */
+
+.online-learning-section {
+    background: #ffffff;
+}
+
+.learning-form {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 32px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    background: #ffffff;
+    border: 1px solid #e7dfce;
+    border-top: 4px solid var(--gold);
+    border-radius: 18px;
+    box-shadow: 0 12px 35px rgba(23, 38, 66, 0.06);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: var(--navy);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d8deea;
+    border-radius: 9px;
+    background: #ffffff;
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+}
+
+.form-group select:focus {
+    border-color: var(--gold-dark);
+    box-shadow: 0 0 0 3px rgba(201, 163, 78, 0.15);
+}
+
+#find-resources-button {
+    grid-column: 1 / -1;
+    width: 100%;
+    min-height: 48px;
+}
+
+.learning-results {
+    max-width: 750px;
+    margin: 24px auto 0;
+    color: var(--ink);
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    .learning-form {
+        grid-template-columns: 1fr;
+        padding: 22px;
+    }
+
+    #find-resources-button {
+        grid-column: auto;
+    }
+}
+
+
+/* ===== LEARNING PROGRESS AND FEEDBACK ===== */
+
+.progress-feedback {
+    position: relative;
+    max-width: 750px;
+    margin: 45px auto 10px;
+    padding: 36px;
+    overflow: hidden;
+    background: linear-gradient(145deg, #ffffff, #fbf9f4);
+    border: 1px solid #e8e0d0;
+    border-radius: 22px;
+    box-shadow: 0 15px 40px rgba(23, 38, 66, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.progress-feedback:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 48px rgba(23, 38, 66, 0.12);
+}
+
+.progress-feedback::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--navy), var(--gold));
+}
+
+.progress-feedback h3 {
+    margin: 0 0 10px;
+    color: var(--navy);
+    font-size: 27px;
+    font-weight: 750;
+    letter-spacing: -0.7px;
+}
+
+.progress-feedback h3::before {
+    content: "✦";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    margin-right: 12px;
+    border-radius: 12px;
+    background: #f5edd9;
+    color: #a87920;
+    font-size: 21px;
+    vertical-align: middle;
+}
+
+.progress-feedback .form-group {
+    margin-top: 24px;
+    margin-bottom: 0;
+}
+
+.progress-feedback .form-group label {
+    margin-bottom: 2px;
+    color: var(--navy);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.progress-feedback select,
+.progress-feedback textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 14px 15px;
+    border: 1px solid #dce2ec;
+    border-radius: 12px;
+    background: #ffffff;
+    color: var(--navy);
+    font-family: inherit;
+    font-size: 14px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.progress-feedback select {
+    cursor: pointer;
+}
+
+.progress-feedback textarea {
+    min-height: 115px;
+    resize: vertical;
+    line-height: 1.7;
+}
+
+.progress-feedback select:hover,
+.progress-feedback textarea:hover {
+    border-color: #c5ad76;
+}
+
+.progress-feedback select:focus,
+.progress-feedback textarea:focus {
+    outline: none;
+    border-color: var(--gold-dark);
+    box-shadow: 0 0 0 4px rgba(201, 163, 78, 0.14);
+}
+
+.progress-feedback textarea::placeholder {
+    color: #929bad;
+}
+
+#save-progress-button {
+    width: 100%;
+    min-height: 52px;
+    margin-top: 26px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(110deg, var(--navy), #263c60);
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#save-progress-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(23, 38, 66, 0.2);
+}
+
+#save-progress-button:active {
+    transform: translateY(0);
+}
+
+#progress-message {
+    margin: 16px 0 0;
+    color: var(--navy);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+    .progress-feedback {
+        margin-top: 30px;
+        padding: 24px 20px;
+        border-radius: 17px;
+    }
+
+    .progress-feedback h3 {
+        font-size: 22px;
+        line-height: 1.4;
+    }
+
+    .progress-feedback h3::before {
+        width: 32px;
+        height: 32px;
+        margin-right: 8px;
+        font-size: 18px;
+    }
+}
+
+.progress-description {
+    margin: 0;
+    color: #748096;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.progress-feedback .form-group:first-of-type {
+    margin-top: 26px;
+}
+
+/* Star Rating */
+.rating-group {
+    margin-top: 24px;
+}
+
+.star-rating {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.star-rating .star {
+    background: transparent;
+    border: none;
+    color: #cbd1dc;
+    font-size: 32px;
+    cursor: pointer;
+    padding: 2px;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.star-rating .star:hover {
+    transform: scale(1.2);
+}
+
+.star-rating .star.active {
+    color: #f5b301;
+}
+
+#rating-message {
+    font-size: 13px;
+    color: #748096;
+    margin-top: 8px;
+}
+/* LearnPath authentication pages */
+.auth-page {
+    box-sizing: border-box;
+    width: min(100% - 32px, 620px);
+    margin: 48px auto;
+    padding: 36px;
+    background: linear-gradient(145deg, #ffffff, #fbf9f4);
+    border: 1px solid #e8e0d0;
+    border-radius: 22px;
+    box-shadow: 0 16px 40px rgba(23, 38, 66, 0.12);
+}
+
+.auth-page h1 {
+    margin: 0 0 10px;
+    color: var(--navy);
+    text-align: center;
+}
+
+.auth-page > p {
+    color: var(--muted, #667085);
+    text-align: center;
+    line-height: 1.6;
+}
+
+.auth-page form {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-top: 26px;
+}
+
+.auth-page label {
+    margin-top: 8px;
+    color: var(--navy);
+    font-weight: 600;
+}
+
+.auth-page input:not([type="checkbox"]),
+.auth-page select,
+.auth-page textarea {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 44px;
+    padding: 11px 12px;
+    color: var(--ink, #263247);
+    background: #fff;
+    border: 1px solid #d5dbe5;
+    border-radius: 9px;
+    font: inherit;
+}
+
+.auth-page textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.auth-page input:focus,
+.auth-page select:focus,
+.auth-page textarea:focus {
+    outline: 2px solid rgba(201, 163, 78, 0.35);
+    border-color: var(--gold, #c9a34e);
+}
+
+.auth-page form section {
+    margin-top: 18px;
+    padding: 18px;
+    background: #f7f8fc;
+    border: 1px solid #e8e0d0;
+    border-left: 4px solid var(--gold, #c9a34e);
+    border-radius: 12px;
+}
+
+.auth-page form section h2 {
+    margin: 0 0 10px;
+    color: var(--navy);
+    font-size: 1.15rem;
+}
+
+.auth-page form section p {
+    line-height: 1.6;
+}
+
+.auth-page form section label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+}
+
+.auth-page form section input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-top: 3px;
+    accent-color: var(--navy);
+    flex-shrink: 0;
+}
+
+.auth-page button[type="submit"] {
+    min-height: 48px;
+    margin-top: 16px;
+    padding: 12px 18px;
+    color: #fff;
+    background: linear-gradient(110deg, var(--navy), #263c60);
+    border: none;
+    border-radius: 10px;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.auth-page button[type="submit"]:hover {
+    background: var(--gold-dark, #9a762b);
+    transform: translateY(-1px);
+}
+
+.auth-page a {
+    color: var(--navy);
+    font-weight: 600;
+}
+
+.auth-page a:hover {
+    color: var(--gold-dark, #805e1c);
+}
+
+@media (max-width: 600px) {
+    .auth-page {
+        width: calc(100% - 24px);
+        margin: 20px auto;
+        padding: 22px 18px;
+    }
+}
+
+/* End LearnPath authentication styles */
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Student Registration | LearnPath</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <main class="auth-page">
+        <h1>Create Student Account</h1>
+        <p>Join LearnPath and continue your learning journey.</p>
+        {% if error %}<p role="alert">{{ error }}</p>{% endif %}
+        <form method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+            <label for="student_name">Full name</label>
+            <input id="student_name" name="student_name" required maxlength="100">
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required maxlength="150">
+
+            <label for="preferred_language">Preferred language</label>
+            <input id="preferred_language" name="preferred_language"
+                   value="English" required maxlength="50">
+
+            <label for="password">Password (at least 8 characters)</label>
+            <input id="password" name="password" type="password"
+                   minlength="8" autocomplete="new-password" required>
+
+            <button type="submit">Create Account</button>
+        </form>
+        <p>Already registered? <a href="{{ url_for('student_login') }}">Log in</a></p>
+        <p><a href="{{ url_for('home') }}">Back to Home</a></p>
+    </main>
+</body>
+</html>

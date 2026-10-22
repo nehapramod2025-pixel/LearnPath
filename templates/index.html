@@ -1,5 +1,4 @@
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,91 +7,78 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-
     <header class="navbar">
         <a href="/" class="logo" aria-label="LearnPath Home">
-            <img
-                src="{{ url_for('static', filename='images/logo.png') }}"
-                alt="LearnPath Logo"
-                class="brand-logo"
-            >
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="LearnPath Logo" class="brand-logo">
             <span>LearnPath<span class="logo-dot">.</span></span>
         </a>
-
         <nav>
             <a href="#home">Home</a>
             <a href="#features">Features</a>
             <a href="#modes">Learning Modes</a>
         </nav>
-
         <a href="#modes" class="nav-button">Start Learning</a>
+        {% if session.get('user_id') %}
+        <span class="nav-account">Signed in: {{ session.get("user_type", "user")|title }}</span>
+        <form method="POST" action="/logout" class="nav-logout-form">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+            <button type="submit" class="nav-button">Log Out</button>
+        </form>
+        {% else %}
+        <a href="/student/login" class="nav-button">Student Login</a>
+        <a href="/student/register" class="nav-button">Register</a>
+        <a href="/tutor/login" class="nav-button">Tutor Login</a>
+        <a href="/tutor/register" class="nav-button">Become a Tutor</a>
+        {% endif %}
     </header>
 
     <main>
         <section class="hero" id="home">
             <div class="hero-content">
                 <p class="eyebrow">YOUR LEARNING, YOUR WAY</p>
-
-                <h1>Every learner has a path.<br>
-                    <span>Let's find yours.</span>
-                </h1>
-
+                <h1>Every learner has a path.<br><span>Let's find yours.</span></h1>
                 <p class="hero-description">
                     LearnPath helps you learn at your own pace.
-                    Choose online video learning or connect with
-                    tutors for offline learning.
+                    Choose online video learning or connect with tutors for offline learning.
                 </p>
-
-                <a href="#modes" class="primary-button">
-                    Explore Learning Modes →
-                </a>
-
+                <a href="#modes" class="primary-button">Explore Learning Modes &rarr;</a>
                 <div class="hero-note">
-                    <span>✓</span> Learn at your own pace
-                    <span>✓</span> Choose your learning style
+                    <span>&#10003;</span> Learn at your own pace
+                    <span>&#10003;</span> Choose your learning style
                 </div>
             </div>
-
             <div class="hero-art">
                 <div class="art-circle"></div>
                 <div class="learning-card">
-                    <div class="book-icon">📚</div>
+                    <div class="book-icon">&#128218;</div>
                     <p class="card-label">YOUR NEXT CHAPTER</p>
                     <h3>Learn something new today.</h3>
-                    <div class="progress-track">
-                        <div class="progress-fill"></div>
-                    </div>
+                    <div class="progress-track"><div class="progress-fill"></div></div>
                     <p class="progress-caption">Your journey starts here!</p>
                 </div>
-
-                <div class="floating-icon video-icon">▶️</div>
-                <div class="floating-icon tutor-icon">👩‍🏫</div>
-                <div class="floating-icon star-icon">✦</div>
+                <div class="floating-icon video-icon">&#9654;</div>
+                <div class="floating-icon tutor-icon">&#128105;</div>
+                <div class="floating-icon star-icon">&#10022;</div>
             </div>
         </section>
 
         <section class="features section" id="features">
             <p class="eyebrow centered">WHY LEARNPATH?</p>
             <h2 class="section-title">Learning that fits you.</h2>
-            <p class="section-description">
-                One platform, two ways to learn, and a journey designed around you.
-            </p>
-
+            <p class="section-description">One platform, two ways to learn, and a journey designed around you.</p>
             <div class="feature-grid">
                 <article class="feature-card">
-                    <div class="feature-icon purple">🎯</div>
+                    <div class="feature-icon purple">&#127919;</div>
                     <h3>Personalized Learning</h3>
                     <p>Follow a learning path based on your subject and progress.</p>
                 </article>
-
                 <article class="feature-card">
-                    <div class="feature-icon orange">📈</div>
+                    <div class="feature-icon orange">&#128200;</div>
                     <h3>Track Your Progress</h3>
                     <p>Keep track of completed topics and your learning journey.</p>
                 </article>
-
                 <article class="feature-card">
-                    <div class="feature-icon green">🔄</div>
+                    <div class="feature-icon green">&#128260;</div>
                     <h3>Learn Your Way</h3>
                     <p>Choose video lessons or tutor-guided learning whenever you need.</p>
                 </article>
@@ -102,86 +88,53 @@
         <section class="modes section" id="modes">
             <p class="eyebrow centered">CHOOSE YOUR PATH</p>
             <h2 class="section-title">How would you like to learn?</h2>
-            <p class="section-description">
-                Select the learning mode that works best for you.
-            </p>
-
+            <p class="section-description">Select the learning mode that works best for you.</p>
             <div class="mode-grid">
                 <article class="mode-card online-card" id="online-learning">
                     <div class="mode-top">
-                        <div class="mode-icon">▶</div>
+                        <div class="mode-icon">&#9654;</div>
                         <span class="mode-tag">LEARN ANYTIME</span>
                     </div>
-
                     <h3>Online Learning</h3>
-                    <p>
-                        Explore YouTube educational videos arranged
-                        by subject, topic, and difficulty level.
-                    </p>
-
+                    <p>Explore YouTube educational videos arranged by subject, topic, and difficulty level.</p>
                     <ul>
-                        <li>✓ Topic-based video recommendations</li>
-                        <li>✓ Beginner-to-advanced learning sequence</li>
-                        <li>✓ Feedback and progress tracking</li>
+                        <li>&#10003; Topic-based video recommendations</li>
+                        <li>&#10003; Beginner-to-advanced learning sequence</li>
+                        <li>&#10003; Feedback and progress tracking</li>
                     </ul>
-
-                    <button class="mode-button online-button"
-                            onclick="showModeMessage('Online Learning')">
-                        Explore Online Learning →
-                    </button>
+                    <a href="{{ url_for('online_learning') }}" class="mode-button online-button">Explore Online Learning &rarr;</a>
                 </article>
-
                 <article class="mode-card offline-card" id="offline-learning">
                     <div class="mode-top">
-                        <div class="mode-icon">👩‍🏫</div>
+                        <div class="mode-icon">&#128105;</div>
                         <span class="mode-tag">LEARN WITH A TUTOR</span>
                     </div>
-
                     <h3>Offline Learning</h3>
-                    <p>
-                        Find tutors for your chosen subject and
-                        arrange learning sessions with them.
-                    </p>
-
+                    <p>Find tutors for your chosen subject and arrange learning sessions with them.</p>
                     <ul>
-                        <li>✓ Discover tutors by subject</li>
-                        <li>✓ View tutor details and available slots</li>
-                        <li>✓ Book a learning session</li>
+                        <li>&#10003; Discover tutors by subject</li>
+                        <li>&#10003; View tutor details and available slots</li>
+                        <li>&#10003; Book a learning session</li>
                     </ul>
-
-                    <button class="mode-button offline-button"
-                            onclick="showModeMessage('Offline Learning')">
-                        Find a Tutor →
-                    </button>
+                    <a href="{{ url_for('offline_learning') }}" class="mode-button offline-button">Find a Tutor &rarr;</a>
                 </article>
             </div>
-
-            <p id="mode-message" class="mode-message" role="status"></p>
         </section>
 
         <section class="closing section">
             <h2>Your learning journey starts with one choice.</h2>
             <p>Choose your path. Build your knowledge. Keep progressing.</p>
-            <a href="#modes" class="primary-button">Get Started →</a>
+            <a href="#modes" class="primary-button">Get Started &rarr;</a>
         </section>
     </main>
 
     <footer>
         <a href="/" class="logo" aria-label="LearnPath Home">
-            <img
-                src="{{ url_for('static', filename='images/logo.png') }}"
-                alt="LearnPath Logo"
-                class="brand-logo"
-            >
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="LearnPath Logo" class="brand-logo">
             <span>LearnPath<span class="logo-dot">.</span></span>
         </a>
-
         <p>Personalized learning, one step at a time.</p>
-        <p class="copyright">© 2026 LearnPath — Academic Project</p>
+        <p class="copyright">&copy; 2026 LearnPath &mdash; Academic Project</p>
     </footer>
-
-    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>
 </html>
-
-

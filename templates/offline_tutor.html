@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline Tutors | LearnPath</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/offline_tutor.css') }}">
+</head>
+<body>
+
+    <header class="navbar">
+        <a class="logo" href="/" aria-label="LearnPath Home">
+            <img class="brand-logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="LearnPath Logo">
+            <span>LearnPath<span class="logo-dot">.</span></span>
+        </a>
+        <nav>
+            <a href="/">Home</a>
+            <a href="#tutors">Tutors</a>
+            <a href="#booking">Booking</a>
+        </nav>
+        <a class="nav-button" href="#tutors">Find a Tutor</a>
+    </header>
+
+    <main class="tutor-page">
+
+        <section class="tutor-hero">
+            <p class="eyebrow">OFFLINE LEARNING</p>
+            <h1>Find your tutor.</h1>
+            <p class="tutor-hero-text">
+                Browse tutors by subject and spoken language, read student reviews,
+                and book a session that fits your time.
+            </p>
+            <p class="tutor-js-status" id="tutor-js-status">Checking JavaScript...</p>
+        </section>
+
+        <section class="tutor-section" id="filters">
+            <div class="tutor-filters">
+                <div class="tutor-filter">
+                    <label for="subject-filter">Subject</label>
+                    <select id="subject-filter">
+                        <option value="">All subjects</option>
+                    </select>
+                </div>
+                <div class="tutor-filter">
+                    <label for="language-filter">Spoken language</label>
+                    <select id="language-filter">
+                        <option value="">All languages</option>
+                    </select>
+                </div>
+                <div class="tutor-filter">
+                    <label for="topic-filter">Topic</label>
+                    <select id="topic-filter" disabled>
+                        <option value="">Choose a subject first</option>
+                    </select>
+                </div>
+                <button type="button" class="tutor-clear-button" id="clear-filters">Clear filters</button>
+            </div>
+            <p class="tutor-result-count" id="result-count" role="status"></p>
+        </section>
+
+        <section class="tutor-section" id="tutors">
+            <p class="tutor-sample-note">Sample tutors and reviews for design testing. Real data will come from the backend.</p>
+            <div class="tutor-grid" id="tutor-grid"></div>
+            <p class="tutor-empty" id="tutor-empty" hidden>No tutors match these filters. Try another subject or language.</p>
+        </section>
+
+        <section class="tutor-section" id="booking">
+            <p class="eyebrow">BOOK A SESSION</p>
+            <h2 class="tutor-section-title">Book a session</h2>
+            <div class="booking-panel">
+                <p class="booking-empty" id="booking-empty">Choose a tutor above and click "Book a session" on their card.</p>
+                <div class="booking-body" id="booking-body" hidden>
+                    <div class="booking-tutor" id="booking-tutor"></div>
+
+                    <div class="booking-field">
+                        <label for="booking-subject">Subject</label>
+                        <select id="booking-subject"></select>
+                    </div>
+
+                    <div class="booking-field">
+                        <p class="booking-label">Pick a day</p>
+                        <div class="booking-days" id="booking-days"></div>
+                    </div>
+
+                    <div class="booking-field">
+                        <p class="booking-label">Pick a time</p>
+                        <div class="booking-slots" id="booking-slots"></div>
+                    </div>
+
+                    <div class="booking-field">
+                        <label for="booking-name">Your name</label>
+                        <input type="text" id="booking-name" maxlength="60" placeholder="Enter your name">
+                    </div>
+
+                    <div class="booking-field">
+                        <label for="booking-email">Your email</label>
+                        <input type="email" id="booking-email" maxlength="254" placeholder="Enter your email address" autocomplete="email">
+                    </div>
+
+                    <div class="booking-summary" id="booking-summary"></div>
+
+
+
+                    <button type="button" class="primary-button" id="booking-confirm" disabled>Request booking</button>
+                    <p class="booking-message" id="booking-message" role="status"></p>
+                </div>
+            </div>
+        </section>
+
+</main>
+
+    <footer>
+        <a class="logo" href="/" aria-label="LearnPath Home">
+            <img class="brand-logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="LearnPath Logo">
+        </a>
+        <p>Personalized learning, one step at a time.</p>
+        <p class="copyright">&copy; 2026 LearnPath &mdash; Academic Project.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/offline_tutor.js') }}"></script>
+</body>
+</html>
+
+

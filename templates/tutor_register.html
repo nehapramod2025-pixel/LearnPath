@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tutor Registration | LearnPath</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <main class="auth-page">
+        <h1>Register as a Tutor</h1>
+        <p>Create your tutor account on LearnPath.</p>
+        {% if error %}<p role="alert">{{ error }}</p>{% endif %}
+        <form method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+            <label for="tutor_name">Full name</label>
+            <input id="tutor_name" name="tutor_name" required maxlength="100">
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required maxlength="150">
+
+            <label for="subject_id">Subject</label>
+            <select id="subject_id" name="subject_id" required>
+                <option value="">Choose a subject</option>
+                {% for subject in subjects %}
+                <option value="{{ subject[0] }}">{{ subject[1] }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="language">Language you teach in</label>
+            <input id="language" name="language" required maxlength="50">
+
+            <label for="experience_years">Experience (years)</label>
+            <input id="experience_years" name="experience_years"
+                   type="number" min="0" step="1" required>
+
+            <label for="hourly_rate">Hourly charge (₹)</label>
+            <input id="hourly_rate" name="hourly_rate"
+                   type="number" min="0" step="0.01" required>
+
+            <label for="bio">Short profile</label>
+            <textarea id="bio" name="bio" maxlength="500"></textarea>
+
+            <label for="password">Password (at least 8 characters)</label>
+            <input id="password" name="password" type="password"
+                   minlength="8" autocomplete="new-password" required>
+
+            <section>
+                <h2>LearnPath Commission Policy</h2>
+                <p>LearnPath retains a 10% commission on eligible paid tutor bookings. Please review this policy before registering.</p>
+                <label>
+                    <input type="checkbox" name="commission_acknowledged"
+                           value="yes" required>
+                    I acknowledge and agree to the 10% LearnPath commission policy.
+                </label>
+            </section>
+
+            <button type="submit">Register as Tutor</button>
+        </form>
+        <p>Already registered? <a href="{{ url_for('tutor_login') }}">Tutor login</a></p>
+        <p><a href="{{ url_for('home') }}">Back to Home</a></p>
+    </main>
+</body>
+</html>
